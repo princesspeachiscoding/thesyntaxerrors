@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendWise Onboarding</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/2.1.4/tesseract.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <button onclick="nextPage(4)">Dashboard</button>
+        <button onclick="nextPage(5)">Receipts</button>
+    </div>
+    
+    <div class="onboarding-container">
+        <div class="onboarding-page active" id="page-1">
+            <img src="assets/happyPenny.png" alt="SpendWise Mascot" class="mascot">
+            <h1 class="app-name">SpendWise</h1>
+            <p class="welcome-message">Master Your Finances, One Step at a Time!</p>
+            <button class="next-btn" onclick="nextPage(2)">Next</button>
+        </div>
+        
+        <div class="onboarding-page" id="page-2">
+            <h2>Why Choose SpendWise?</h2>
+            <p>✅ Gamified for Easy Use</p>
+            <p>✅ Smart Budgeting Assistance</p>
+            <p>✅ AI-Powered Financial Coach</p>
+            <button class="next-btn" onclick="nextPage(3)">Next</button>
+        </div>
+        
+        <div class="onboarding-page" id="page-3">
+            <h2>Get Ready to Take Control of Your Budget!</h2>
+            <button class="get-started" onclick="nextPage(4)">Get Started</button>
+        </div>
+        
+        <!-- Login and Signup Page -->
+        <div class="onboarding-page" id="page-4">
+            <h2 id="auth-title">Create an Account</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button onclick="handleAuth()" id="auth-btn">Sign Up</button>
+            <p id="toggle-auth">Already have an account? <a href="#" onclick="toggleAuthMode()">Login</a></p>
+            <p id="error-message" style="color: red; display: none;">Account not found. Please sign up.</p>
+        </div>
+        
+        <!-- Receipt Scanner Page -->
+        <div class="onboarding-page" id="page-5">
+            <h2>Scan Your Receipt</h2>
+            <input type="file" id="receipt-upload" accept="image/*">
+            <button onclick="scanReceipt()">Scan</button>
+            <p id="scan-result"></p>
+        </div>
+    </div>
+
+
+</body>
+</html>
