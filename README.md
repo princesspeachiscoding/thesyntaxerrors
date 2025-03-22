@@ -7,17 +7,17 @@ Names: Isma Swati, Roi, Azaria Green, Niya DeCuir
 This app helps users manage their finances by providing features like bill splitting, monthly planning, emergency fund tracking, task management, and mascot reminders.
 
 ## Features
-- **Bill Splitter**: Split bills among users.
+- **Budgeting**: Split bills among users.
 - **Monthly Planner**: Track expenses and income.
-- **Emergency Fund Tracker**: Manage emergency funds.
+- **Tracking Funds**: Manage emergency funds.
 - **Task Tracker**: Track habits and tasks.
-- **Mascot Reminders**: Send reminders and track patterns.
+
 
 ## Tech Stack
 - **Backend**: Flask/Django (Python) or ASP.NET (C#)
 - **Frontend**: React/Vue.js
 - **Database**: PostgreSQL/MySQL
-- **Hosting**: Heroku/AWS/Azure
+
 
 ## Installation
 ```bash
