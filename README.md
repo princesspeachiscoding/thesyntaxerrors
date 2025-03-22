@@ -30,3 +30,6 @@ cd financial-awareness-app
 # Install dependencies
 pip install -r requirements.txt  # For Python
 npm install  # For frontend
+
+
+hello
