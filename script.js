@@ -1,3 +1,50 @@
+// Penny emotions and images
+const pennyEmotions = [
+    { emotion: 'Happy', imgSrc: 'assets/happy_penny.png', description: 'Penny is happy when you make smart finance decisions!' },
+    { emotion: 'Frustrated', imgSrc: 'assets/frustrated_penny.png', description: 'Penny feels frustrated when you ignore her advice.' },
+    { emotion: 'Disappointed', imgSrc: 'assets/disappointed_penny.png', description: 'Penny is disappointed when you make impulsive choices.' }
+];
+
+let currentEmotionIndex = 0;
+
+// Get all emotion containers
+const emotionContainers = document.querySelectorAll('.emotion-container'); 
+
+// Function to update Penny's emotion display
+function updatePennyEmotion() {
+    // Hide all emotion containers
+    emotionContainers.forEach(container => {
+        container.style.display = 'none';  // Hide all emotions
+     });     
+
+    // Show the current emotion container
+    emotionContainers[currentEmotionIndex].style.display = 'block'; // Show current emotion
+
+    // Update Penny's image and description based on the current emotion
+    const pennyImg = emotionContainers[currentEmotionIndex].querySelector('img');
+    const pennyDescription = emotionContainers[currentEmotionIndex].querySelector('h3');
+    pennyImg.src = pennyEmotions[currentEmotionIndex].imgSrc;
+    pennyDescription.textContent = pennyEmotions[currentEmotionIndex].description;
+
+}
+
+// Event listeners for arrow buttons
+document.querySelector('#next-emotion').addEventListener('click', () => {
+    currentEmotionIndex = (currentEmotionIndex + 1) % pennyEmotions.length;
+    updatePennyEmotion();
+});
+
+document.querySelector('#prev-emotion').addEventListener('click', () => {
+    currentEmotionIndex = (currentEmotionIndex - 1 + pennyEmotions.length) % pennyEmotions.length;
+    updatePennyEmotion();
+});
+
+// Initialize the first emotion
+updatePennyEmotion();
+
+
+
+
 function nextPage(pageNumber) {
     document.querySelectorAll('.onboarding-page').forEach(page => {
         page.classList.remove('active');
