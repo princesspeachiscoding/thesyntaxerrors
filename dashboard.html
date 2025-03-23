@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penny AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <button onclick="window.location.href='dashboard.html'">Dashboard</button>
+        <button onclick="window.location.href='financial_game.html'">Financial Literacy Quiz</button>
+        <button onclick="window.location.href='pennyai.html'">Penny AI</button>
+    </nav>
+
+    <!-- Penny AI Section -->
+    <section id="penny-ai">
+        <h2>Welcome to Penny AI!</h2>
+        <p>Your personal financial assistant here to guide you through smart budgeting decisions.</p>
+        <div id="penny-emotions">
+            <!-- Penny's emotions content will go here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Powered by The Syntax Errors</p>
+    </footer>
+
+    <!-- Botpress Webchat Integration -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/03/23/13/20250323132547-ET1OV0D7.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize Botpress Webchat
+            if (window.botpressWebChat) {
+                console.log("Botpress WebChat initialized successfully!");
+            }
+
+            // You can trigger events or send a message right after loading if needed
+            window.botpressWebChat.sendEvent({
+                type: 'text',
+                text: 'Hello, Penny AI! I need help with my budget.',
+            });
+
+            // For example, you can trigger a message when a user clicks on something
+            document.getElementById("user-interaction").addEventListener("click", function() {
+                // Send another event when a specific action occurs
+                window.botpressWebChat.sendEvent({
+                    type: 'text',
+                    text: 'How can I better manage my finances?',
+                });
+            });
+        });
+    </script>
+</body>
+</html>
