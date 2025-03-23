@@ -12,11 +12,9 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <button onclick="showPage('dashboard')">Dashboard</button>
-        <button onclick="showPage('goals')">Goals</button>
+        <button onclick="window.location.href='dashboard.html'">Dashboard</button>  <!-- Updated -->
         <button onclick="window.location.href='financial_game.html'">Financial Literacy Quiz</button>
-        <button onclick="showPage('penny')">Penny AI</button>
-        <button onclick="showPage('receipts')">Receipts</button>
+        <button onclick="window.location.href='pennyai.html'">Penny AI</button>  <!-- Updated -->
     </nav>
 
     <!-- Hero Section -->
@@ -121,5 +119,10 @@
             <p>Powered by The Syntax Errors</p>
         </div>
     </footer>
+
+    <!-- Add this before the closing </body> tag -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/03/23/13/20250323132547-B1IX7XI9.json"></script>
+
+
 </body>
 </html>
