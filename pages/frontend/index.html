@@ -5,13 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpendWise</title>
     <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="SpendWise - Manage your expenses efficiently">
+    <meta property="og:title" content="SpendWise">
+    <meta property="og:description" content="Manage your expenses efficiently with SpendWise">
+    <meta property="og:image" content="path/to/image.jpg">
+    <meta property="og:url" content="http://yourwebsite.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="path/to/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div id="auth-container">
+    <div id="auth-container" role="form" aria-labelledby="auth-title">
         <h1 id="auth-title">Create an Account</h1>
-        <div id="error-message" style="display: none; color: red;">Invalid username or password</div>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
+        <div id="error-message" style="display: none; color: red;" role="alert">Invalid username or password</div>
+        <input type="text" id="username" placeholder="Username" aria-label="Username">
+        <input type="password" id="password" placeholder="Password" aria-label="Password">
         <button id="auth-btn" onclick="handleAuth()">Sign Up</button>
         <p id="toggle-auth">Already have an account? <a href="#" onclick="toggleAuthMode()">Login</a></p>
     </div>
@@ -22,6 +29,19 @@
         <button onclick="scanReceipt()">Scan Receipt</button>
         <p id="scan-result"></p>
     </div>
+
+    <div id="loading-spinner" style="display: none;">
+        <img src="path/to/spinner.gif" alt="Loading...">
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SpendWise. All rights reserved.</p>
+        <nav>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+        </nav>
+    </footer>
 
     <script src="scripts.js"></script>
 </body>

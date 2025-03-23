@@ -1,3 +1,9 @@
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('auth-btn').addEventListener('click', handleAuth);
+    document.getElementById('toggle-auth').addEventListener('click', toggleAuthMode);
+    document.getElementById('receipt-upload').addEventListener('change', scanReceipt);
+});
+
 function nextPage(pageNumber) {
     document.querySelectorAll('.onboarding-page').forEach(page => {
         page.classList.remove('active');
@@ -23,16 +29,13 @@ function toggleAuthMode() {
 }
 
 function handleAuth() {
+    if (!validateForm()) return;
+
     let username = document.getElementById('username').value;
     let password = document.getElementById('password').value;
     let authButton = document.getElementById('auth-btn');
     let errorMessage = document.getElementById('error-message');
     
-    if (!username || !password) {
-        alert("Please fill out all fields.");
-        return;
-    }
-
     if (authButton.innerText === "Sign Up") {
         if (localStorage.getItem(username)) {
             alert("Username already exists!");
@@ -47,9 +50,27 @@ function handleAuth() {
             alert("Login successful! Welcome to SpendWise.");
             nextPage(4);  // Go to the Dashboard page (page 4) after login
         } else {
-            errorMessage.style.display = 'block';
+            handleError("Invalid username or password");
         }
     }
+}
+
+function validateForm() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (!username || !password) {
+        alert("Please fill out all fields.");
+        return false;
+    }
+
+    return true;
+}
+
+function handleError(message) {
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.textContent = message;
+    errorMessage.style.display = 'block';
 }
 
 function scanReceipt() {
@@ -60,6 +81,8 @@ function scanReceipt() {
         alert("Please upload a receipt image or PDF.");
         return;
     }
+
+    showLoadingSpinner();
 
     // Check if the uploaded file is a PDF
     if (fileInput.type === "application/pdf") {
@@ -87,6 +110,7 @@ function scanReceipt() {
                 // Wait for all pages to be processed
                 Promise.all(pagePromises).then(function() {
                     processTextContent(textContent);  // Process the extracted text
+                    hideLoadingSpinner();
                 });
             });
         };
@@ -102,9 +126,11 @@ function scanReceipt() {
             }
         ).then(({ data: { text } }) => {
             processTextContent(text);  // Process the extracted text
+            hideLoadingSpinner();
         });
     } else {
         alert("Invalid file type. Please upload a PDF or an image.");
+        hideLoadingSpinner();
     }
 }
 
@@ -124,4 +150,12 @@ function processTextContent(text) {
         let resultText = document.getElementById('scan-result');
         resultText.innerText = "Could not detect the total amount.";
     }
+}
+
+function showLoadingSpinner() {
+    document.getElementById('loading-spinner').style.display = 'block';
+}
+
+function hideLoadingSpinner() {
+    document.getElementById('loading-spinner').style.display = 'none';
 }
