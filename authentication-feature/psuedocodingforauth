@@ -1,0 +1,23 @@
+# Pseudocode for User Registration
+#function register_user(username, password):
+  #  if username and password are valid:
+   #   store username and hashed password in the database
+  #   return success message
+   #     return error message
+
+# Pseudocode for User Login
+#function login_user(username, password):
+  #  retrieve user from database by username
+  #  if user exists and password matches:
+   #     generate JWT token
+   #     return token
+  #  else:
+   #     return error message
+
+# Pseudocode for JWT Authentication
+#function authenticate_token(token):
+  #  decode the token
+  #  if token is valid:
+  #      return user information
+  #  else:
+  #      return error message
