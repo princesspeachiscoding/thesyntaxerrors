@@ -1,61 +1,125 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpendWise Onboarding</title>
+    <title>SpendWise: Finance Made Fun & Easy</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/2.1.4/tesseract.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-
     <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="navbar">
-        <button onclick="nextPage(4)">Dashboard</button>
-        <button onclick="nextPage(5)">Receipts</button>
-    </div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <button onclick="showPage('dashboard')">Dashboard</button>
+        <button onclick="showPage('goals')">Goals</button>
+        <button onclick="window.location.href='financial_game.html'">Financial Literacy Quiz</button>
+        <button onclick="showPage('penny')">Penny AI</button>
+        <button onclick="showPage('receipts')">Receipts</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Master Your Finances, One Step at a Time!</h2>
+            <p>📊 Track. Save. Succeed. Let our piggy bank mascot guide you to better budgeting!</p>
+            <ul>
+                <li>✅ Gamified for Easy Use</li>
+                <li>✅ Smart Budgeting Assistance</li>
+                <li>✅ AI-Powered Financial Coach</li>
+            </ul>
+            <a href="#game" class="cta-btn">Start Now</a>
+        </div>
+    </section>
+
+    <!-- Why SpendWise is Right for You Section -->
+    <section id="why-spendwise" class="why-spendwise">
+        <h2>Why SpendWise is Right for You</h2>
+        <div class="benefit-columns">
+            <div class="benefit">
+                <img src="assets/piggy_bank.png" alt="Save Time & Money">
+                <h4>Save Time & Money</h4>
+                <p>Get actionable insights in minutes! SpendWise helps you quickly understand your spending habits and offers solutions to save more.</p>
+            </div>
+            <div class="benefit">
+                <img src="assets/planner.png" alt="Budget Smarter">
+                <h4>Budget Smarter, Not Harder</h4>
+                <p>Track your expenses effortlessly and receive personalized recommendations that fit your unique goals.</p>
+            </div>
+            <div class="benefit">
+                <img src="assets/learning_fun.png" alt="Make Finance Fun">
+                <h4>Make Finance Fun</h4>
+                <p>No more boring spreadsheets! Learn to manage your money through interactive games and rewards that make budgeting feel like a game.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="meet-penny" class="meet-penny">
+        <h2>Meet Penny the Piggy Bank!</h2>
+        <p>Your friendly AI assistant here to guide you on your financial journey!</p>
+        <p>Penny is more than just a mascot—she’s your personal financial coach, reacting to your decisions with real-time emotions. Let her guide you toward better choices and celebrate your progress along the way!</p>
     
-    <div class="onboarding-container">
-        <div class="onboarding-page active" id="page-1">
-            <img src="assets/happyPenny.png" alt="SpendWise Mascot" class="mascot">
-            <h1 class="app-name">SpendWise</h1>
-            <p class="welcome-message">Master Your Finances, One Step at a Time!</p>
-            <button class="next-btn" onclick="nextPage(2)">Next</button>
+        <!-- Penny's Emotions Section -->
+        <div class="penny-emotions">
+            <div class="emotion-container">
+                <img src="assets/happy_penny.png" alt="Penny is happy" class="penny-img" id="penny-image">
+                <h3>Penny is happy when you make smart financial decisions!</h3>
+            </div>
+            <div class="emotion-container">
+                <img src="assets/frustrated_penny.png" alt="Penny is frustrated" class="penny-img" style="display: none;">
+                <h3>Penny feels frustrated when you ignore her advice.</h3>
+            </div>
+            <div class="emotion-container">
+                <img src="assets/disappointed_penny.png" alt="Penny is disappointed" class="penny-img" style="display: none;">
+                <h3>Penny is disappointed when you make impulsive choices.</h3>
+            </div>
         </div>
-        
-        <div class="onboarding-page" id="page-2">
-            <h2>Why Choose SpendWise?</h2>
-            <p>✅ Gamified for Easy Use</p>
-            <p>✅ Smart Budgeting Assistance</p>
-            <p>✅ AI-Powered Financial Coach</p>
-            <button class="next-btn" onclick="nextPage(3)">Next</button>
+    
+        <!-- Arrows to navigate between emotions -->
+        <div class="arrow-buttons">
+            <button id="prev-emotion" class="arrow">← Previous</button>
+            <button id="next-emotion" class="arrow">Next →</button>
         </div>
-        
-        <div class="onboarding-page" id="page-3">
-            <h2>Get Ready to Take Control of Your Budget!</h2>
-            <button class="get-started" onclick="nextPage(4)">Get Started</button>
-        </div>
-        
-        <!-- Login and Signup Page -->
-        <div class="onboarding-page" id="page-4">
-            <h2 id="auth-title">Create an Account</h2>
+
+    </section>
+    
+
+    <!-- Authentication Page -->
+    <div id="auth" class="page">
+        <h2 id="auth-title">Create an Account</h2>
+        <form id="auth-form">
             <input type="text" id="username" placeholder="Username" required>
             <input type="password" id="password" placeholder="Password" required>
-            <button onclick="handleAuth()" id="auth-btn">Sign Up</button>
-            <p id="toggle-auth">Already have an account? <a href="#" onclick="toggleAuthMode()">Login</a></p>
-            <p id="error-message" style="color: red; display: none;">Account not found. Please sign up.</p>
-        </div>
-        
-        <!-- Receipt Scanner Page -->
-        <div class="onboarding-page" id="page-5">
-            <h2>Scan Your Receipt</h2>
-            <input type="file" id="receipt-upload" accept="image/*">
-            <button onclick="scanReceipt()">Scan</button>
-            <p id="scan-result"></p>
-        </div>
+            <button type="button" onclick="handleAuth()" id="auth-btn">Sign Up</button>
+        </form>
+        <p id="toggle-auth">Already have an account? <a href="#" onclick="toggleAuthMode()">Login</a></p>
+        <p id="error-message" style="color: red; display: none; font-weight: bold;">Account not found. Please sign up.</p>
     </div>
 
 
+    <!-- Overview of Dashboard Section -->
+    <section id="dashboard" class="dashboard">
+        <h3>Track Your Financial Health</h3>
+        <p>Easily monitor your income, expenses, savings goals, and more with a sleek, easy-to-use dashboard.</p>
+        <a href="#" class="cta-btn">View Your Dashboard</a>
+        
+        <!-- Centered image below the content -->
+        <div class="image-container">
+            <img src="assets/charts.png" alt="Dashboard Image" class="centered-image">
+        </div>
+    </section>
+
+
+
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <ul></ul>
+            <p>Powered by The Syntax Errors</p>
+        </div>
+    </footer>
 </body>
 </html>
